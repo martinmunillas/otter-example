@@ -1,0 +1,91 @@
+@import url("/static/tokens.css");
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 16px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background-color: var(--black);
+  color: var(--white);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+  background: transparent;
+  border: 2px solid var(--white);
+  font-weight: bold;
+  color: var(--white);
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+p {
+  margin-top: 0.25rem;
+}
+
+ul {
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+img {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+:is(input, select, textarea) {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--black);
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  color: var(--black);
+  background-color: var(--white);
+  outline: none;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.language-selector {
+  width: fit-content;
+  font-size: 0.875rem;
+  padding: 0.25rem;
+  color: var(--white);
+  background-color: transparent;
+  border-color: transparent;
+}
+
+:is(input, select, textarea):focus {
+  border-color: var(--white);
+}
+
+:is(input, select, textarea):disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}

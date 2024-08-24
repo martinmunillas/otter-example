@@ -1,0 +1,101 @@
+package component
+
+import (
+	"github.com/martinmunillas/otter"
+	"github.com/martinmunillas/otter-example/service"
+	"github.com/martinmunillas/otter/i18n"
+)
+
+css otterStyles() {
+	width: min(320px, 80vmin);
+	height: min(320px, 80vmin);
+	border-radius: 100%;
+}
+
+css containerStyles() {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--spacing-md);
+	width: 100vw;
+	height: 100vh;
+	padding: max(3rem, 10vh) max(3rem, 10vw);
+}
+
+css headerStyles() {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+}
+
+css getStartedBadgeStyles() {
+	border: 1px solid var(--white);
+	padding: var(--spacing-sm);
+	border-radius: 0.25rem;
+}
+
+css mainStyles() {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--spacing-lg);
+}
+
+css mainTextStyles() {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+css cardStyles() {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--spacing-sm);
+}
+
+css cardTitleStyles() {
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-md);
+}
+
+templ IndexPage(user *service.User, err error) {
+	@HtmlLayout() {
+		@otter.ErrorAlert(err)
+		<div class={ containerStyles() }>
+			<div class={ headerStyles() }>
+				<p class={ getStartedBadgeStyles() }>
+					@i18n.T(ctx, "home.getStartedByEditing", i18n.Replacements{
+						"file": "component/index.templ",
+					})
+				</p>
+				@i18n.LanguageSelector()
+			</div>
+			<main class={ mainStyles() }>
+				<img class={ otterStyles() } src="/static/otter.webp" alt="Otter's logo"/>
+				<div class={ mainTextStyles() }>
+					<h1>
+						Otter
+					</h1>
+					<p>
+						@i18n.RawT(ctx, "otter.description")
+					</p>
+				</div>
+			</main>
+			<div>
+				<a href="https://github.com/martinmunillas/otter" target="_blank" class={ cardStyles() }>
+					<h2 class={ cardTitleStyles() }>
+						@i18n.T(ctx, "home.docs.title")
+						<i class="fa-solid fa-arrow-right"></i>
+					</h2>
+					<p>
+						@i18n.T(ctx, "home.docs.description")
+					</p>
+				</a>
+			</div>
+		</div>
+	}
+}
