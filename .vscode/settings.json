@@ -5,5 +5,8 @@
   },
   "emmet.includeLanguages": {
     "templ": "html"
+  },
+  "files.exclude": {
+    "**/.otter": true
   }
 }
