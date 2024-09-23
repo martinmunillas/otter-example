@@ -4,6 +4,7 @@ import (
 	"github.com/martinmunillas/otter"
 	"github.com/martinmunillas/otter-example/service"
 	"github.com/martinmunillas/otter/i18n"
+	"github.com/martinmunillas/otter/server"
 )
 
 css otterStyles() {
@@ -62,13 +63,13 @@ css cardTitleStyles() {
 	gap: var(--spacing-md);
 }
 
-templ IndexPage(user *service.User, err error) {
+templ IndexPage(t server.Tools, user *service.User, err error) {
 	@HtmlLayout() {
 		@otter.ErrorAlert(err)
 		<div class={ containerStyles() }>
 			<div class={ headerStyles() }>
 				<p class={ getStartedBadgeStyles() }>
-					@i18n.T(ctx, "home.getStartedByEditing", i18n.Replacements{
+					@t.T("home.getStartedByEditing", i18n.Replacements{
 						"file": "component/index.templ",
 					})
 				</p>
@@ -81,18 +82,18 @@ templ IndexPage(user *service.User, err error) {
 						Otter
 					</h1>
 					<p>
-						@i18n.RawT(ctx, "otter.description")
+						@t.RawT("otter.description")
 					</p>
 				</div>
 			</main>
 			<div>
 				<a href="https://github.com/martinmunillas/otter" target="_blank" class={ cardStyles() }>
 					<h2 class={ cardTitleStyles() }>
-						@i18n.T(ctx, "home.docs.title")
+						@t.T("home.docs.title")
 						<i class="fa-solid fa-arrow-right"></i>
 					</h2>
 					<p>
-						@i18n.T(ctx, "home.docs.description")
+						@t.T("home.docs.description")
 					</p>
 				</a>
 			</div>

@@ -12,9 +12,9 @@ func GetIndex() server.Handler {
 	return func(r *http.Request, t server.Tools) {
 		user, err := service.GetUser()
 		if err != nil {
-			t.Send.InternalError.HTML(err, component.IndexPage(user, err))
+			t.Send.InternalError.HTML(err, component.IndexPage(t, user, err))
 			return
 		}
-		t.Send.Ok.HTML(component.IndexPage(user, err))
+		t.Send.Ok.HTML(component.IndexPage(t, user, err))
 	}
 }
