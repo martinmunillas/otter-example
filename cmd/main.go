@@ -1,8 +1,6 @@
 package main
 
 import (
-	"net/http"
-
 	"github.com/martinmunillas/otter/env"
 	"github.com/martinmunillas/otter/server"
 
@@ -15,10 +13,9 @@ var port = env.OptionalIntEnvVar("PORT", 8080)
 func main() {
 	translations.Setup()
 
-	server.NewServer([]server.Endpoint{{
-		Path:    "/{$}",
-		Method:  http.MethodGet,
-		Handler: handler.GetIndex(),
-	}}).ServeStatic("./static").Listen((port))
-
+	server.
+		NewServer().
+		HandlePages(server.NewPage("/{$}", handler.GetIndex())).
+		ServeStatic("./static").
+		Listen((port))
 }

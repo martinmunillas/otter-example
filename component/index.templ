@@ -4,7 +4,7 @@ import (
 	"github.com/martinmunillas/otter"
 	"github.com/martinmunillas/otter-example/service"
 	"github.com/martinmunillas/otter/i18n"
-	"github.com/martinmunillas/otter/server"
+	"github.com/martinmunillas/otter/server/tools"
 )
 
 css otterStyles() {
@@ -63,7 +63,7 @@ css cardTitleStyles() {
 	gap: var(--spacing-md);
 }
 
-templ IndexPage(t server.Tools, user *service.User, err error) {
+templ IndexPage(t tools.Tools, user *service.User, err error) {
 	@HtmlLayout() {
 		@otter.ErrorAlert(err)
 		<div class={ containerStyles() }>
